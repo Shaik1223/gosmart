@@ -55,6 +55,23 @@ public class DesignationServiceImplTest {
 		when(repository.findAll()).thenThrow(NullPointerException.class);
 		service.getDesignations(); 
 	}
+	@Test
+	public void testGetDesignations1()throws Exception
+	{
+		Integer designationId=1;
+		DesignationEntity designationEntity=new DesignationEntity();
+		DesignationEntity designationEntity2=Mockito.any();
+		when(repository.findByDesignationId(designationId)).thenReturn(designationEntity2);
+		 designationEntity=service.getDesignations1(designationId); 
+		assertNotNull(designationId);
+	}
+	@Test(expected = GoSmartException.class)
+	public void testGetDesignations1_Exception()throws Exception
+	{
+		Integer designationId=1;
+		when(repository.findByDesignationId(designationId)).thenThrow(NullPointerException.class);
+		 service.getDesignations1(designationId); 
+	}
 	
 
 }

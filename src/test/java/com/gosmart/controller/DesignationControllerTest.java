@@ -65,5 +65,26 @@ public class DesignationControllerTest {
 		assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
 		
 	}
+	@Test
+	public void testGetDesignations1()throws Exception
+	{
+		DesignationEntity designationEntity=new DesignationEntity();
+		Integer designationId=1;
+		when(service.getDesignations1(designationId)).thenReturn(designationEntity);
+		ResponseEntity<DesignationEntity> response=desinationController.getDesignations1(designationId);
+		assertEquals(HttpStatus.OK, response.getStatusCode());
+		
+	}
+	@Test
+	public void testGetDesignations1_Exception()throws Exception
+	{
+		
+		Integer designationId=1;
+		when(service.getDesignations1(designationId)).thenThrow(NullPointerException.class);
+		ResponseEntity<DesignationEntity> response=desinationController.getDesignations1(designationId);
+		assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+		
+	}
+	
 	
 }

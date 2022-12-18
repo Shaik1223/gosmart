@@ -56,5 +56,18 @@ public class DesignationServiceImpl implements DesignationService{
 		}
 		return designations;
 	}
+	@Override
+	public DesignationEntity getDesignations1(Integer designationId) {
+		log.info("{}-ServiceImpl getDesignations1() started",DesignationConstants.DESIGNATION);
+		DesignationEntity designationEntity=null;
+		try {
+			log.info("{}-ServiceImpl getDesignations1() saving designation",DesignationConstants.DESIGNATION);
+			designationEntity=designationRepository.findByDesignationId(designationId);
+		} catch (Exception e) {
+			log.error("{}-ServiceImpl exception occured-{}",DesignationConstants.DESIGNATION,e.getMessage());
+			throw new GoSmartException(e.getMessage());
+		}
+		return designationEntity;
+	}
 	
 }

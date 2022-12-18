@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 import com.gosmart.repository.entity.DesignationEntity;
 @Repository
 public interface DesignationRepository extends JpaRepository<DesignationEntity, Integer>{
-	
+	public DesignationEntity findByDesignationId(Integer designationId);
 }
